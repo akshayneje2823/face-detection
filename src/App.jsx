@@ -1,9 +1,9 @@
-import './App.css';
+import Intro from './components/intro/intro'
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <Intro />
     </div>
   );
 }
