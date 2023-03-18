@@ -1,4 +1,4 @@
-.intro {
+.introduction {
     display: flex;
     height: 100vh;    
 }
@@ -10,7 +10,16 @@
 .intro-right{
     flex: 1;
 }
-.intro-i {
+.intro-left-wrapper{
+    padding: 50px;
+}
+.intro {
     font-size: 30px;
     font-weight: 3000;
+}
+.intro-name{
+    font-size: 50px;
+}
+.intro-title{
+    height: 50px;
 }
