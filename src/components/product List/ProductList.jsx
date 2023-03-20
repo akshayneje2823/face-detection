@@ -1,6 +1,9 @@
 import React from 'react'
 import Product from '../product/Product'
 import './productList.css'
+import { products } from '../../data'
+
+
 
 const ProductList = () => {
     return (
@@ -11,15 +14,9 @@ const ProductList = () => {
                     Beautiful homes, stunning portfolio styles & a whole lot more awaits
                     inside.</p>
                 <div className="pl-list">
-                    <Product />
-                    <Product />
-                    <Product />
-                    <Product />
-                    <Product />
-
-                    <Product />
-
-
+                    {
+                        products.map(pro => <Product key={pro.id} img={pro.img} link={pro.link} />)
+                    }
                 </div>
             </div>
         </div>
