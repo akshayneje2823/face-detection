@@ -1,14 +1,34 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import './contact.css'
 import phone from '../../img/phone.png'
 import email from '../../img/email.png'
 import address from '../../img/address.png'
+import emailjs from '@emailjs/browser';
 
 
 const Contact = () => {
   const formRef = useRef()
+  const [done, setDone] = useState(false)
   function submitHandler(e) {
-    e.preventDefault()
+    e.preventDefault();
+
+    emailjs.sendForm(
+
+      'service_447jkhj',
+      'template_5vncv19',
+      formRef.current,
+      'ILN4lr21DTiBN0bDY'
+    )
+      .then((result) => {
+        console.log(result.text);
+        setDone(true); setTimeout(() => {
+          setDone(false)
+        }, 5000);
+
+      }, (error) => {
+        console.log(error.text);
+      });
+
   }
   return (
     <div className='c'>
@@ -37,11 +57,12 @@ const Contact = () => {
             freelancing if the right project comes along. me.
           </p>
           <form ref={formRef} onSubmit={(e) => submitHandler(e)}>
-            <input type="text" name='user-name' placeholder='Name' />
-            <input type="text" name='user-subject' placeholder='Subject' />
-            <input type="text" name='user-email' placeholder='Email' />
+            <input type="text" name='user_name' placeholder='Name' />
+            <input type="text" name='user_subject' placeholder='Subject' />
+            <input type="text" name='user_email' placeholder='Email' />
             <textarea rows="5" placeholder='message' name='message' />
             <button>Submit</button>
+            {done && " Thank you..."}
           </form>
         </div>
       </div>
